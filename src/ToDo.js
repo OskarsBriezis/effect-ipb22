@@ -1,12 +1,19 @@
+import { useState } from "react";
 
-function ToDo() {
+function ToDo(props) {
+const [change, setChange] = useState(props.completed);
+
     return (
     <>
-        <p>UserId: 1</p>
-        <p>Id: 1</p>
-        <p>delectus aut autem</p>
-        <input type="checkbox"></input>
+        <p>UserId: {props.userId}</p>
+        <p>Id: {props.id}</p>
+        <p>{props.title}</p>
+        <div key={props.indexx}>
+        <input type="checkbox" checked={change} onChange={(event) => {setChange(event.target.checked)}}>
+        </input>
+        </div>
     </>
     );
 }
+
 export default ToDo;
