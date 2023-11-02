@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import ToDo from "./ToDo";
+import Comment from "./Comment";
 
 function App() {
   const [toDo, setToDo] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [comment,setComment] = useState();
 
   useEffect(() => {
     async function getData() {
@@ -11,6 +14,7 @@ function App() {
         );
   const data = await response.json();
   setToDo(data);
+  setLoading(false);
     }
     getData();
   }, []);
@@ -23,7 +27,8 @@ function App() {
 
   return (
     <>
-      <ToDo {...toDo} />
+      {loading ? <p>Loading...</p> : <ToDo {...toDo} />}
+      <Comment />
     </>
   );
 }
