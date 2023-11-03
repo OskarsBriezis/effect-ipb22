@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import ToDo from "./ToDo";
 import Comment from "./Comment";
+import PostList from "./PostList";
+import Post from "./Post";
 
 function App() {
   const [toDo, setToDo] = useState({});
   const [loading, setLoading] = useState(true);
-  const [comment,setComment] = useState();
 
   useEffect(() => {
     async function getData() {
@@ -28,7 +29,8 @@ function App() {
   return (
     <>
       {loading ? <p>Loading...</p> : <ToDo {...toDo} />}
-      <Comment />
+      <Post />
+      <PostList />
     </>
   );
 }
